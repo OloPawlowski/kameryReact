@@ -70,5 +70,4 @@ const Cameras = (props) => {
     </div>
   )
 };
-
 export default Cameras;

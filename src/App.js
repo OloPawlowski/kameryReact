@@ -4,9 +4,9 @@ import './App.css';
 const App = () => {
   return (
     <div className="App">
-    <Cameras />
+      <Cameras />
     </div>
   );
-}
+};
 
 export default App;
