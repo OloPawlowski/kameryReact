@@ -36,11 +36,10 @@ const PostmanKam = () => {
       })
       .then((resData) => {
         console.log(resData);
-        // const post = {
+        // const photo = {
         //   _id: resData.post._id,
-        //   title: resData.post.title,
-        //   content: resData.post.content,
-        //   creator: resData.post.creator,
+        //   idCamera: resData.post.idCamera,
+        //   pathCamera: resData.post.pathCamera,
         //   createdAt: resData.post.createdAt,
         // };
       })
