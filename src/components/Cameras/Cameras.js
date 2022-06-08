@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
+import PostmanKam from '../PostmanKam/PostmanKam';
 import classes from './Cameras.module.css';
 
 const CAMERAS = [
   {
+    name: 'id kamery: ',
     cameraId: '0AAAAAAAAAAAAAA',
   },
   {
+    name: 'id kamery: ',
     cameraId: '1BBBBBBBBBBBBBB',
   },
   {
+    name: 'id kamery: ',
     cameraId: '5G04C9BPAGC8B5D',
   },
   {
+    name: 'id kamery: ',
     cameraId: '6FFFFFFFFFFFFFFF',
   },
   {
+    name: 'id kamery: ',
     cameraId: '7GGGGGGGGGGGGGG',
-  },
+  }
 ];
 
-const Cameras = (props) => {
+const Cameras = () => {
 
-  const [idCamera, setIdCamera] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [httpError, setHttpError] = useState(false);
+  const [idCamera, setIdCamera] = useState('');
   const [photo, setPhoto] = useState(null);  
+ // const [httpError, setHttpError] = useState(false);
+ //const [isLoaded, setIsLoaded] = useState(false);
 
   console.log(photo, idCamera);
 //   useEffect(() => {
@@ -49,14 +55,14 @@ const Cameras = (props) => {
     setIdCamera(cameraId);
     fetch('http://localhost:8080/feed/posts')    
        .then(res => res.json())
-        .then(resData => setPhoto(resData.posts[0].title + ' ' + resData.posts[0].content + idCamera))
+        .then(resData => setPhoto(resData.posts[0].idCamera + ' ' + resData.posts[0].pathCamera))
         .catch(err => console.log(err));
   };
   
   const buttons = CAMERAS.map((el) => (
     <Button
       key={el.cameraId}
-      name={el.cameraId}
+      name={el.name + el.cameraId}
       click={() => grabPhotoHandler(el.cameraId)}
     />
   ));
@@ -67,6 +73,7 @@ const Cameras = (props) => {
     <div className={classes.container}>
       {buttons}
       {display}
+      <PostmanKam/>
     </div>
   )
 };
