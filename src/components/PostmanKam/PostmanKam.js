@@ -1,23 +1,23 @@
 import Button from '../Button/Button';
 
 const PostmanKam = () => {
-  const downloadPictures = () => {
+  const downLoadPictures = () => {
     fetch('http://localhost:8080/feed/photo')
       .then((res) => {
         if (res.status !== 200) {
           throw new Error(
-            'Failed to fetch posts from PostmanKam loadPictures.'
+            'Failed to fetch posts from PostmanKam downLoadPictures.'
           );
         }
         return res.json();
       })
       .then(resData => {
-        console.log('PostmanKam downloadPictures', resData);
+        console.log('PostmanKam downLoadPictures', resData);
       })
       .catch();
   };
 
-  const uploadPhoto = () => {
+  const upLoadPhoto = () => {
     let url = 'http://localhost:8080/feed/photo';
     let method = 'POST';
     fetch(url, {
@@ -50,9 +50,9 @@ const PostmanKam = () => {
 
   return (
     <div>
-      <Button type="button" click={downloadPictures} name="load all" />
+      <Button type="button" click={downLoadPictures} name="load all" />
+      <Button type="button" click={upLoadPhoto} name="send" />
     </div>
-      //<Button type="button" click={uploadPhoto} name="send" />
   );
 };
 export default PostmanKam;

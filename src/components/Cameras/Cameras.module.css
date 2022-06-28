@@ -2,3 +2,9 @@
     background-color:  #2d2b2b;
     color: aliceblue;
 }
+.display {
+    width: 100%;
+}
+.display img {
+    width: 100%;
+}

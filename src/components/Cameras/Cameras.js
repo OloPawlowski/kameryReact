@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
-import PostmanKam from '../PostmanKam/PostmanKam';
-import fotka from '../../assets/image.jpg';
+//import PostmanKam from '../PostmanKam/PostmanKam';
 import classes from './Cameras.module.css';
 
 const CAMERAS = [
@@ -19,11 +18,11 @@ const CAMERAS = [
   },
   {
     name: 'id kamery: ',
-    cameraId: '6FFFFFFFFFFFFFFF',
+    cameraId: '6J02D05PAG57E44',
   },
   {
     name: 'id kamery: ',
-    cameraId: '7GGGGGGGGGGGGGG',
+    cameraId: '7GGGGGGG1111111',
   },
 ];
 
@@ -33,7 +32,7 @@ const Cameras = () => {
   // const [httpError, setHttpError] = useState(false);
   //const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log('photo: ', photo, 'idCamera: ', idCamera);
+  console.log('photo: ', photo, 'idCamera:', idCamera);
   //   useEffect(() => {
   //     const fetchPhoto = async () => {
   //       const response = await fetch('http://localhost:8080/feed/photo');
@@ -54,11 +53,11 @@ const Cameras = () => {
   const grabPhotoHandler = (cameraId) => {
     setIdCamera(cameraId);
     fetch('http://localhost:8080/feed/photo')
-      .then((res) => res.json())
-      .then((resData) => setPhoto(resData.photo[0].imageUrl))
+   //  .then((res) => res.json())
+     .then(res => res.blob())
+      .then((resData) => setPhoto(URL.createObjectURL(resData)))//  'http://localhost:8080/' + resData.photo
       .catch((err) => console.log(err));
   };
-  //new Date(resData.photos[0].createdAt).toLocaleDateString('en-US')
   const buttons = CAMERAS.map((el) => (
     <Button
       key={el.cameraId}
@@ -68,9 +67,9 @@ const Cameras = () => {
   ));
 
   const display = (
-    <div>
-      <p>{typeof photo}</p> 
-      <img src={photo} alt="zdjęcie drogi"/>
+    <div className={classes.display}>
+      <p>niżej zdjęcie z tej ścieżki: { photo }</p> 
+      <img src={ photo } alt="zdjęcie drogi"/>
     </div>
   );
 
@@ -78,7 +77,6 @@ const Cameras = () => {
     <div className={classes.container}>
       {buttons}
       {display}
-      <PostmanKam />
     </div>
   );
 };
