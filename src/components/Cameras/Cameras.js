@@ -4,14 +4,14 @@ import Button from '../Button/Button';
 import classes from './Cameras.module.css';
 
 const CAMERAS = [
-  {
-    name: 'id kamery: ',
-    cameraId: '0AAAAAAAAAAAAAA',
-  },
-  {
-    name: 'id kamery: ',
-    cameraId: '1BBBBBBBBBBBBBB',
-  },
+  // {
+  //   name: 'id kamery: ',
+  //   cameraId: '0AAAAAAAAAAAAAA',
+  // },
+  // {
+  //   name: 'id kamery: ',
+  //   cameraId: '1BBBBBBBBBBBBBB',
+  // },
   {
     name: 'id kamery: ',
     cameraId: '5G04C9BPAGC8B5D',
@@ -20,10 +20,10 @@ const CAMERAS = [
     name: 'id kamery: ',
     cameraId: '6J02D05PAG57E44',
   },
-  {
-    name: 'id kamery: ',
-    cameraId: '7GGGGGGG1111111',
-  },
+  // {
+  //   name: 'id kamery: ',
+  //   cameraId: '7GGGGGGG1111111',
+  // },
 ];
 
 const Cameras = () => {
@@ -52,7 +52,7 @@ const Cameras = () => {
 
   const grabPhotoHandler = (cameraId) => {
     setIdCamera(cameraId);
-    fetch('http://localhost:8080/feed/photo')
+    fetch('http://localhost:8080/feed/photo/' + cameraId)
    //  .then((res) => res.json())
      .then(res => res.blob())
       .then((resData) => setPhoto(URL.createObjectURL(resData)))//  'http://localhost:8080/' + resData.photo
